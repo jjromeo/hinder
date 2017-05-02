@@ -28,8 +28,8 @@ describe 'Photo features' do
       end
 
       it 'will have the option to upvote or downvote a photo' do
-        expect(page).to have_css 'upvote'
-        expect(page).to have_css 'downvote'
+        expect(page).to have_css '.upvote'
+        expect(page).to have_css '.downvote'
       end
     end
   end

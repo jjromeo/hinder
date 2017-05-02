@@ -1,5 +1,7 @@
 class Photo < ApplicationRecord
   belongs_to :user
+  has_many :votes
+
   has_attached_file :image
 
   validates_attachment :image, presence: true,
