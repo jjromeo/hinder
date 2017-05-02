@@ -24,6 +24,8 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rails'
   gem 'guard-bundler'
+  gem 'guard-rspec', require: false
+
 end
 
 group :development do
@@ -36,6 +38,9 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'terminal-notifier-guard', '~> 1.6.1'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
