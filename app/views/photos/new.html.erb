@@ -1,4 +1,6 @@
 <%= form_for @photo, url: user_photos_path(current_user), html: { multipart: true } do |f| %>
-  <%= f.file_field :image, as: :image %>
+  <div class="form-group">
+    <%= f.file_field :image, as: :image %>
+  </div>
   <%= f.submit 'Submit' %>
 <% end %>
