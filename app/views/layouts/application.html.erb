@@ -9,6 +9,9 @@
   </head>
 
   <body>
+  <% if signed_in? %>
+    <%= link_to 'Profile', user_path(current_user.id) %>
+  <% end %>
     <%= yield %>
   </body>
 </html>

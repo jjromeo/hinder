@@ -25,7 +25,6 @@ group :development, :test do
   gem 'guard-rails'
   gem 'guard-bundler'
   gem 'guard-rspec', require: false
-
 end
 
 group :development do
@@ -41,6 +40,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'terminal-notifier-guard', '~> 1.6.1'
+  gem 'launchy'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
