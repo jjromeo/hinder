@@ -17,6 +17,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'devise'
+gem 'paperclip', '~> 5.0.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -34,6 +35,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
