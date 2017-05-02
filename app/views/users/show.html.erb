@@ -1,0 +1,10 @@
+Welcome to your user page
+
+Photos:
+<ul>
+<% @user.photos.each do |photo| %>
+  <li><%= image_tag photo.image.url %></li>
+<% end %>
+</ul>
+
+<%= link_to "Add a photo", new_user_photo_path(@user) %>
