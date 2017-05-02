@@ -41,6 +41,7 @@ group :test do
   gem 'capybara'
   gem 'terminal-notifier-guard', '~> 1.6.1'
   gem 'launchy'
+  gem 'faker'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

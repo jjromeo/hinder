@@ -1,11 +1,8 @@
 describe 'Photo features' do
+  include SessionHelpers
   context 'uploading a photo' do
     before do
-      visit new_user_registration_path
-      fill_in 'Email', with: 'jerome@test.com'
-      fill_in 'Password', with: 'password'
-      fill_in 'Password confirmation', with: 'password'
-      click_button 'Sign up'
+      sign_up('jerome@test.com')
     end
 
     it 'a user can upload a photo' do
@@ -14,6 +11,26 @@ describe 'Photo features' do
       attach_file 'photo_image', "spec/fixtures/example.jpg"
       click_button 'Submit'
       expect(page).to have_selector 'img'
+    end
+  end
+
+  xcontext 'Voting on a photo' do
+    let(:other_user) { create(:user) }
+    context 'when a photo exists' do
+
+      before do
+        create(:photo, user_id: other_user.id)
+        sign_up('jerome@test.com')
+      end
+
+      it 'Will show you the image on the main page' do
+        expect(page).to have_selector 'image_container'
+      end
+
+      it 'will have the option to upvote or downvote a photo' do
+        expect(page).to have_css 'upvote'
+        expect(page).to have_css 'downvote'
+      end
     end
   end
 end
