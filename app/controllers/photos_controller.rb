@@ -1,5 +1,12 @@
 class PhotosController < ApplicationController
   def index
+    @photo = Photo.for_voting(current_user).first
+  end
+
+  def for_voting
+    user = User.find(params[:user_id])
+    photos = Photo.for_voting(user)
+    render json: photos
   end
 
   def new
