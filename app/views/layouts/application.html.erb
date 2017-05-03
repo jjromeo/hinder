@@ -11,6 +11,7 @@
   <body>
   <% if signed_in? %>
     <%= link_to 'Profile', user_path(current_user.id) %>
+    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
   <% end %>
     <%= yield %>
   </body>
