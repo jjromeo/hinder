@@ -1,0 +1,7 @@
+<% if @photo.present? %>
+  <div id="image_container">
+    <%= image_tag @photo.image.url, id: 'photo' %>
+    <%= link_to "Like", '#', id: 'like' %>
+    <%= link_to "Dislike", '#', id: 'dislike' %>
+  </div>
+<% end %>
