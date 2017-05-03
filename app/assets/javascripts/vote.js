@@ -8,10 +8,9 @@ $(document).ready(function() {
       url: '/votes',
       data: {
        vote_type: 'dislike',
-       photo_id: 15 
+       photo_id: photoId
       },
-      success: function() {
-      },
+      success: getNextPhoto,
       error: function(error) {
         console.log(error);
       }
@@ -19,6 +18,20 @@ $(document).ready(function() {
   });
 
   function getNextPhoto() {
-    
+    $.ajax({
+      type: "GET",
+      url: '/photos/for_voting',
+      success: function(photo) {
+        if(photo) {
+          $('#photo').fadeOut();
+          $('#image_container').data('image-id', photo.id)
+          console.log(photo.image_url)
+          $('#photo').attr('src', photo.image_url)
+          $('#photo').fadeIn();
+        } else {
+          alert("No more photos to vote on! Try again later!")
+        }
+      }
+    })
   }
 })

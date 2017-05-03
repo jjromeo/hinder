@@ -6,12 +6,12 @@ Rails.application.routes.draw do
     delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
   root to: 'photos#index'
-  resources :photos, only: :index
+  resources :photos, only: :index do
+    get :for_voting, on: :collection
+  end
   resources :votes, only: :create
 
   resources :users, only: :show do
-    resources :photos, only: [:new, :create] do
-      get :for_voting, on: :collection
-    end
+    resources :photos, only: [:new, :create]
   end
 end

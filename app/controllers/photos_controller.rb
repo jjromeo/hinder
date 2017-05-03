@@ -4,9 +4,12 @@ class PhotosController < ApplicationController
   end
 
   def for_voting
-    user = User.find(params[:user_id])
-    photos = Photo.for_voting(user)
-    render json: photos
+    photo = Photo.for_voting(current_user).first
+    if photo.present?
+      render json: { id: photo.id, image_url: photo.image.url }
+    else
+      render json: nil
+    end
   end
 
   def new
