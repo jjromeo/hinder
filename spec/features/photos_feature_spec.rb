@@ -14,12 +14,13 @@ describe 'Photo features' do
     end
   end
 
-  xcontext 'Voting on a photo' do
+  context 'Voting on a photo' do
     let(:other_user) { create(:user) }
     context 'when a photo exists' do
 
       before do
         create(:photo, user_id: other_user.id)
+        create(:photo, user_id: other_user.id, image: fixture_file_upload(Rails.root.join('spec', 'fixtures', 'example2.jpg'), 'image/jpg'))
         sign_up('jerome@test.com')
       end
 
@@ -28,8 +29,14 @@ describe 'Photo features' do
       end
 
       it 'will have the option to upvote or downvote a photo' do
-        expect(page).to have_css '.upvote'
-        expect(page).to have_css '.downvote'
+        expect(page).to have_css '.like'
+        expect(page).to have_css '.dislike'
+      end
+
+      it 'will take you to the next photo' do
+        expect(page.find('#photo')['src']).to have_content 'example1.jpg'
+        click_button 'Like'
+        expect(page.find('#photo')['src']).to have_content 'example2.jpg'
       end
     end
   end
