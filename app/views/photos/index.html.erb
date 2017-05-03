@@ -1,5 +1,5 @@
 <% if @photo.present? %>
-  <div id="image_container">
+  <div id="image_container" data-image-id="<%= @photo.id %>">
     <%= image_tag @photo.image.url, id: 'photo' %>
     <%= link_to "Like", '#', id: 'like' %>
     <%= link_to "Dislike", '#', id: 'dislike' %>
