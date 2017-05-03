@@ -9,5 +9,6 @@ class Photo < ApplicationRecord
     size: { in: 0..10.megabytes }
   validates_attachment_content_type :image, content_type: ["image/jpg", "image/jpeg", "image/png"]
 
-  scope :for_voting, ->(user) { where.not(user_id: user.id)}
+  scope :not_belonging_to, -> (user) { where.not(user_id: user.id) }
+  scope :for_voting, ->(user) { not_belonging_to(user).where.not(id: user.voted_on_ids) }
 end
