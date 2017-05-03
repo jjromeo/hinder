@@ -5,4 +5,6 @@ RSpec.describe Vote do
     is_expected.to validate_inclusion_of(:vote_type)
       .in_array(['like', 'dislike']) 
   end
+  it { is_expected.to validate_presence_of(:vote_type)}
+
 end

@@ -25,17 +25,17 @@ describe 'Photo features' do
       end
 
       it 'Will show you the image on the main page' do
-        expect(page).to have_selector 'image_container'
+        expect(page).to have_css '#image_container'
       end
 
       it 'will have the option to upvote or downvote a photo' do
-        expect(page).to have_css '.like'
-        expect(page).to have_css '.dislike'
+        expect(page).to have_css '#like'
+        expect(page).to have_css '#dislike'
       end
 
-      it 'will take you to the next photo' do
-        expect(page.find('#photo')['src']).to have_content 'example1.jpg'
-        click_button 'Like'
+      it 'will take you to the next photo on disliking' do
+        expect(page.find('#photo')['src']).to have_content 'example.jpg'
+        click_link 'Dislike'
         expect(page.find('#photo')['src']).to have_content 'example2.jpg'
       end
     end
