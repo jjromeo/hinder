@@ -1,7 +1,6 @@
-Welcome to your user page <%= @user.email %>
+Profile for <%= @user.email %>
 
-Photos:
-<ul>
+<ul class="photos">
 <% @user.photos.each do |photo| %>
   <li><%= image_tag photo.image.url %></li>
 <% end %>
