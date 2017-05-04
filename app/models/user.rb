@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :photos
-  has_many :votes
-  has_many :messages
+  has_many :photos, dependent: :destroy
+  has_many :votes, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   # Grab only recent photos associated through a vote
   has_many :recently_voted_on_photos, ->{ Vote.recent }, through: :votes, source: :photo

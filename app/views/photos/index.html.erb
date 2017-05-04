@@ -1,11 +1,13 @@
 <% if @photo.present? %>
-  <div id="image_container" data-image-id="<%= @photo.id %>">
+  <div id="image_container" data-image-id="<%= @photo.id %>" class="col-md-4 offset-md-4">
     <%= image_tag @photo.image.url, id: 'photo' %>
-    <%= link_to "Like", '#', id: 'like' %>
-    <%= link_to "Dislike", '#', id: 'dislike' %>
+    <div id="votes">
+      <%= link_to "Like", '#', id: 'like' %>
+      <%= link_to "Dislike", '#', id: 'dislike' %>
+    </div>
   </div>
 <% end %>
 
-<div id="chat_room_container">
+<div id="chat_room_container" class="col-md-4 offset-md-4">
   <%= render @latest_chat %>
 </div>

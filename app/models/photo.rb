@@ -1,6 +1,6 @@
 class Photo < ApplicationRecord
   belongs_to :user
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   has_attached_file :image
 

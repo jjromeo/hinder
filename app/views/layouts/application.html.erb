@@ -9,10 +9,15 @@
   </head>
 
   <body>
-  <% if signed_in? %>
-    <%= link_to 'Profile', user_path(current_user.id) %>
-    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-  <% end %>
-    <%= yield %>
+  <div id="row">
+    <% if signed_in? %>
+      <%= link_to 'Profile', user_path(current_user.id) %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    <% end %>
+    <div class="col-md-12">
+      <%= yield %>
+    </div>
+
+  </div>
   </body>
-</html>
+  </html>

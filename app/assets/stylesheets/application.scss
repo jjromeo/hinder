@@ -18,4 +18,11 @@
 
 img {
   height: 300px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10%;
+}
+
+#votes {
+  text-align: center;
 }
