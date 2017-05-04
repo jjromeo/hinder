@@ -25,6 +25,8 @@ group :development, :test do
   gem 'guard-rails'
   gem 'guard-bundler'
   gem 'guard-rspec', require: false
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development do

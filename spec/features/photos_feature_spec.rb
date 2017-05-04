@@ -1,5 +1,4 @@
-describe 'Photo features' do
-  include SessionHelpers
+describe 'Photo features', type: :feature do
   context 'uploading a photo' do
     before do
       sign_up('jerome@test.com')
@@ -33,9 +32,11 @@ describe 'Photo features' do
         expect(page).to have_css '#dislike'
       end
 
-      it 'will take you to the next photo on disliking' do
+      it 'will take you to the next photo on disliking', js: true do
         expect(page.find('#photo')['src']).to have_content 'example.jpg'
         click_link 'Dislike'
+        # Wait for ajax to finish before checking otherwise page has changed
+        wait_for_ajax
         expect(page.find('#photo')['src']).to have_content 'example2.jpg'
       end
     end
