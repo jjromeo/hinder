@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   def index
     @photo = Photo.for_voting(current_user).first
+    @latest_chat = ChatRoom.latest_for_user(current_user)
   end
 
   def for_voting
