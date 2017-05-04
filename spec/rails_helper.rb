@@ -8,6 +8,13 @@ require 'rspec/rails'
 require 'shoulda-matchers'
 require 'paperclip/matchers'
 
+# Allow capybara to run js
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
+# Required to clear database when running js specs
+require 'database_cleaner'
+
 #require all support files
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 require 'capybara/rails'
@@ -19,7 +26,6 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
