@@ -8,10 +8,8 @@ class User < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :messages, dependent: :destroy
 
-  # Grab only recent photos associated through a vote
-  has_many :recently_voted_on_photos, ->{ Vote.recent }, through: :votes, source: :photo
-
-  def voted_on_ids
-    recently_voted_on_photos.pluck(:id).uniq
+  # Grab only recent photos_ids of photos a user has voted on
+  def voted_on_photo_ids
+    votes.recent.pluck(:photo_id).uniq
   end
 end
