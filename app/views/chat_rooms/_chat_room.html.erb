@@ -1,0 +1,17 @@
+<div id='chat_room'>
+  <div id="title">
+    <%= "You are now chatting with #{chat_room.other_user(current_user).email}" %>
+  </div>
+  <div id="messages" data-chat-room-id="<%= chat_room.id %>">
+    <%= render chat_room.messages %>
+  </div>
+
+  <%= form_for Message.new, url: '#' do |f| %>
+    <div class="form-group">
+    <%= f.text_area :content, class: 'form-control' %>
+    <small class="text-muted">From 1 to 500 characters</small>
+  </div>
+
+  <%= f.submit "Send", class: 'btn btn-primary btn-lg' %>
+<% end %>
+</div>

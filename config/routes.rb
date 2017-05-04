@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     resources :photos, only: [:new, :create]
   end
+
+  resources :chat_rooms, only: :create
+
+  mount ActionCable.server => '/cable'
 end

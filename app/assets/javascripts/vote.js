@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // grab photo id from image container
   var photoId = $('#image_container').data('image-id')
   $('#dislike').on('click', function(event) {
     dislikeVote(event);
@@ -9,7 +10,6 @@ $(document).ready(function() {
   });
 
   function dislikeVote(event) {
-    // grab photo id from image container
     event.preventDefault();
     $.ajax({
       type: "POST",
@@ -42,7 +42,16 @@ $(document).ready(function() {
   }
 
   function openChat() {
-    console.log('Implement chat features!');
+    $.ajax({
+      type: "POST",
+      url: '/chat_rooms',
+      data: {
+        photo_id: photoId
+      },
+      success: function(data) {
+        $('#chat_room_container').html(data.chat_room_html);
+      }
+    });
   }
 
   function getNextPhoto() {
@@ -53,7 +62,6 @@ $(document).ready(function() {
       success: function(photo) {
         if(photo) {
           $('#image_container').data('image-id', photo.id)
-          console.log(photo.image_url)
           $('#photo').attr('src', photo.image_url)
           $('#photo').fadeIn();
         } else {

@@ -2,6 +2,7 @@ RSpec.describe User do
   it { is_expected.to have_many :photos }
   it { is_expected.to have_many :votes }
   it { is_expected.to have_many(:recently_voted_on_photos).through(:votes).source(:photo) }
+  it { is_expected.to have_many(:messages) }
 
   context 'voted_on_photos' do
     let(:user) { create(:user) }
