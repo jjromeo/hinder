@@ -79,6 +79,7 @@ Rails.application.configure do
   config.paperclip_defaults = {
     storage: :s3,
     bucket: ENV["S3_BUCKET_NAME"],
+    s3_region: ENV['AWS_REGION']
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
