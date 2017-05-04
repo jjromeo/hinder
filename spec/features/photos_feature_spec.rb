@@ -32,12 +32,22 @@ describe 'Photo features', type: :feature do
         expect(page).to have_css '#dislike'
       end
 
-      it 'will take you to the next photo on disliking', js: true do
-        expect(page.find('#photo')['src']).to have_content 'example.jpg'
-        click_link 'Dislike'
-        # Wait for ajax to finish before checking otherwise page has changed
-        wait_for_ajax
-        expect(page.find('#photo')['src']).to have_content 'example2.jpg'
+      context 'disliking a photo' do
+        it 'will take you to the next photo', js: true do
+          expect(page.find('#photo')['src']).to have_content 'example.jpg'
+          click_link 'Dislike'
+          # Wait for ajax to finish before checking otherwise page has changed
+          wait_for_ajax
+          expect(page.find('#photo')['src']).to have_content 'example2.jpg'
+        end
+      end
+
+      context 'liking a photo', js: true do
+        it 'will open up a chat with the owner of the photo' do
+          click_link 'Like'
+          wait_for_ajax
+          expect(page).to have_content("You are now chatting with #{other_user.email}")
+        end
       end
     end
   end
