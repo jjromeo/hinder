@@ -1,6 +1,5 @@
 $(document).ready(function() {
   // grab photo id from image container
-  var photoId = $('#image_container').data('image-id')
   $('#dislike').on('click', function(event) {
     dislikeVote(event);
   });
@@ -10,6 +9,7 @@ $(document).ready(function() {
   });
 
   function dislikeVote(event) {
+    var photoId = $('#image_container').data('image-id');
     event.preventDefault();
     $.ajax({
       type: "POST",
@@ -26,6 +26,7 @@ $(document).ready(function() {
   }
 
   function likeVote(event) {
+    var photoId = $('#image_container').data('image-id');
     event.preventDefault();
     $.ajax({
       type: "POST",
@@ -42,6 +43,7 @@ $(document).ready(function() {
   }
 
   function openChat() {
+    var photoId = $('#image_container').data('image-id');
     $.ajax({
       type: "POST",
       url: '/chat_rooms',
