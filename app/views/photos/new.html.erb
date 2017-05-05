@@ -1,6 +1,12 @@
 <%= form_for @photo, url: user_photos_path(current_user), html: { multipart: true } do |f| %>
+  <% if @photo.errors.any? %>
+    <% @photo.errors.full_messages.each do |message| %>
+      <div class="alert-danger"><%= message %></div>
+    <% end %>
+  <% end %>
   <div class="form-group">
     <%= f.file_field :image, as: :image %>
   </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit 'Submit' %>
 <% end %>

@@ -3,6 +3,7 @@ Profile for <%= @user.email %>
 <ul class="photos">
 <% @user.photos.each do |photo| %>
   <li><%= image_tag photo.image.url %></li>
+  <li><%= link_to "Remove this photo", photo_path(photo), method: :delete  %></li>
 <% end %>
 </ul>
 

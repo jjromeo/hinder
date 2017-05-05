@@ -4,12 +4,24 @@ describe 'Photo features', type: :feature do
       sign_up('jerome@test.com')
     end
 
-    it 'a user can upload a photo' do
+    def add_photo
       click_link 'Profile'
       click_link 'Add a photo'
       attach_file 'photo_image', "spec/fixtures/example.jpg"
       click_button 'Submit'
+    end
+
+    it 'a user can upload a photo' do
+      add_photo
+      expect(page).to have_content 'Photo added!'
       expect(page).to have_selector 'img'
+    end
+
+    it 'a user can delete a photo' do
+      add_photo
+      click_link "Remove this photo"
+      expect(page).to have_content "Photo deleted"
+      expect(page).not_to have_selector 'img'
     end
   end
 

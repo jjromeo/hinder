@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'photos#index'
-  resources :photos, only: :index do
+  resources :photos, only: [:index, :destroy] do
     get :for_voting, on: :collection
   end
   resources :votes, only: :create

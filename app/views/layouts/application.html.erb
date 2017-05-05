@@ -16,6 +16,11 @@
         <%= link_to 'Profile', user_path(current_user.id) %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       </div>
+      <div class="container">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+      </div>
     <% end %>
     <div class="col-md-12">
       <%= yield %>

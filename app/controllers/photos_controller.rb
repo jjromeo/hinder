@@ -18,18 +18,25 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = current_user.photos.build(photo_params)
+    @photo = Photo.new(photo_params)
 
-    if @photo.save!
+    if @photo.save
+      flash[:success] = "Photo added!"
       redirect_to user_path(current_user.id)
     else
       render :new
     end
   end
 
+  def destroy
+    Photo.find(params[:id]).destroy
+    flash[:success] = "Photo deleted"
+    redirect_to user_path(current_user.id)
+  end
+
   private
 
   def photo_params
-    params.require(:photo).permit(:image)
+    params.require(:photo).permit(:image, :user_id)
   end
 end
