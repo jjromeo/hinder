@@ -37,7 +37,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
 
-  config.web_socket_server_url = "wss://hinder.herokuapp.com/cable"
+  config.web_socket_server_url = "ws://hinder.herokuapp.com/cable"
 
   config.action_cable.allowed_request_origins = [ 'https://hinder.herokuapp.com', 'http://hinder.herokuapp.com']
 
