@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def voted_on_photo_ids
     votes.recent.pluck(:photo_id).uniq
   end
+
+  def name
+    email.split('@').first
+  end
 end

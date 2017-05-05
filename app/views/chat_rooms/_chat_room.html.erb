@@ -1,6 +1,6 @@
 <div id='chat_room'>
   <div id="title">
-    <%= "You are now chatting with #{chat_room.other_user(current_user).email}" %>
+    <%= "You are now chatting with #{chat_room.other_user(current_user).name}" %>
   </div>
   <div id="messages" data-chat-room-id="<%= chat_room.id %>">
     <%= render chat_room.messages %>

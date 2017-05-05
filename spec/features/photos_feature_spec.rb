@@ -46,7 +46,7 @@ describe 'Photo features', type: :feature do
         it 'will open up a chat with the owner of the photo' do
           click_link 'Like'
           wait_for_ajax
-          expect(page).to have_content("You are now chatting with #{other_user.email}")
+          expect(page).to have_content("You are now chatting with #{other_user.name}")
         end
       end
     end

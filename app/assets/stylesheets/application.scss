@@ -16,11 +16,23 @@
 
 @import "bootstrap";
 
+body {
+  text-align: center;
+}
+
+#links {
+  text-align: left;
+}
+
 img {
   height: 300px;
   display: block;
   margin: 0 auto;
   border-radius: 10%;
+}
+
+p#photo_name {
+  font-weight: bold;
 }
 
 #votes {

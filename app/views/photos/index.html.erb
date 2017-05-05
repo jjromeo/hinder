@@ -1,5 +1,6 @@
 <% if @photo.present? %>
   <div id="image_container" data-image-id="<%= @photo.id %>" class="col-md-4 offset-md-4">
+    <p id="photo_name"><%= @photo.user.name %></p>
     <%= image_tag @photo.image.url, id: 'photo' %>
     <div id="votes">
       <%= link_to "Like", '#', id: 'like' %>
